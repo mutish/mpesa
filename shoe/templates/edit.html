@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+
+         {% load static %}
+    <link rel="stylesheet" href="{%static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}"/>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap-grid.css' %}"/>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap-grid.min.css' %}"/>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm col-md col-lg col-xl">
+            <form method="post" class="post-form" action="/update/{{Shoe.id}}">
+                {% csrf_token %}
+                <div class="mb-3 mt-3">
+                    <label for="Image" class="form-label">Shoe name:</label>
+                    <br>
+                    <input type="text" name="Shoe_name" id="id_Shoe_name" required maxlength="100" value="{{ shoes.Shoe_name }}"/>
+                </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Shoe URL:</label>
+                    <br>
+                    <input type="text" name="Shoe_image" id="id_Shoe_email" required maxlength="10000000000000000000000000000000000000" value="{{ shoes.Shoe_image }}"/>
+                </div>
+                <div class="mb-3">
+                    <label for="number" class="form-check-label">Shoes Price:</label>
+                    <br>
+                    <input type="text" name="shoes_price" id="id_Shoe_price" required maxlength="100" value="{{ shoes.Shoe_price }}" />
+                </div>
+                <button type="submit" class="btn btn-success">Update</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

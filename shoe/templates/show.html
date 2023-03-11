@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+             {% load static %}
+    <link rel="stylesheet" href="{%static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}"/>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap-grid.css' %}"/>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap-grid.min.css' %}"/>
+
+    <style>
+        @media only screen and (max-width: 600px) {
+            .flex-container {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-black navbar-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="https://th.bing.com/th/id/OIP.4AkTIjgRpp--RUZJlzIz6gHaHa?w=210&h=210&c=7&r=0&o=5&pid=1.7" alt="Avatar Logo" style="width:40px;" class="rounded-circle">
+    </a>
+      <h class="justify-content-center" style="color: white">SELL YOUR SHOES!!!</h>
+      <a href="/new" class="btn btn-outline-warning">Add shoe</a>
+  </div>
+</nav>
+<div class="container mt-3">
+<div class="flex-container">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Shoe name</th>
+        <th>Shoe image</th>
+        <th>Shoe price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for shoes  in shoes %}
+
+      <tr>
+        <td>{{ shoes.Shoe_name }}</td>
+        <td><img src="{{ shoes.Shoe_image}}" width="150" height="150"></td>
+        <td>{{ shoes.Shoe_price }}</td>
+        <td>
+            <a href="/edit/{{ shoes.id }}" class="btn btn-outline-info"><span class="glyphicon glyphicon-pencil" >Edit</span></a>
+            <br>
+            <br>
+            <a href="/delete/{{ shoes.id }}" class="btn btn-outline-danger">Delete</a>
+            <br>
+            <a href="/index/{{ shoes.id }}" class="btn-outline-secondary">Checkout</a>
+        </td>
+      </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+</div>
+</div>
+</body>
+</html>

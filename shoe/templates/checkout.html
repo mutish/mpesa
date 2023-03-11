@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment</title>
+</head>
+<body>
+<div>
+    <div class="container-fluid">
+        <div class="row-cols-5">
+            <form method="post" class="post-form" action="/index">
+                {% csrf_token %}
+                <div class="mb-3 mt-3">
+                    <label for="name" class="form-label">Shoe name:</label>
+                    <br>
+                    {{ form.Shoe_name }}
+                </div>
+                <div class="mb-3">
+                    <label for="number" class="form-check-label">Price:</label>
+                    <br>
+                    {{ form.Shoe_price }}
+                </div>
+                <div class="mb-3">
+                    <label for="number" class="form-check-label">Phone number:</label>
+                    <br>
+                    {{ form.Shoe_price }}
+                </div>
+
+                <button type="submit" class="btn-outline-secondary">Submit</button>
+
+        </div>
+
+
+        </form>
+
+    </div>
+
+</div>
+</body>
+</html>

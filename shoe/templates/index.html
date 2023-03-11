@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+     {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}"/>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap-grid.css' %}"/>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap-grid.min.css' %}"/>
+
+
+</head>
+<body>
+<div>
+    <div class="container-fluid">
+        <div class="row-cols-5">
+            <form method="post" class="post-form" action="/new">
+                {% csrf_token %}
+                 <div class="mb-3 mt-3">
+                        <label for="Image" class="form-label">Shoe image URL:</label>
+                        <br>
+                     {{ form.Shoe_image }}
+                     <div class="mb-3">
+                            <label for="name" class="form-label">Shoe name:</label>
+                            <br>
+                            {{ form.Shoe_name }}
+                        </div>
+                        <div class="mb-3">
+                            <label for="number" class="form-check-label">Price:</label>
+                            <br>
+                            {{ form.Shoe_price }}
+                        </div>
+                     <button type="submit" class="btn-outline-secondary">Submit</button>
+                 </div>
+
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+</body>
+</html>
