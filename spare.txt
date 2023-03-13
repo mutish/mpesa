@@ -1,0 +1,151 @@
+VIEWS.py
+# def index(request):
+#     shoes = Shoes.objects.get(id=id)
+#     form = Shoes(request.POST, instance=shoes)
+#     if form.is_valid():
+#         form.save()
+#         return redirect('/show')
+#     return redirect(request, 'checkout.html', {'form': form})
+
+
+CHECKOUT.html
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Payment</title>#}
+{#</head>#}
+{#<body>#}
+{#<div>#}
+{#    <div class="container-fluid">#}
+{#        <div class="row-cols-5">#}
+{#            <form method="post" class="post-form" action="/index">#}
+{#                {% csrf_token %}#}
+{#                <div class="mb-3 mt-3">#}
+{#                    <label for="name" class="form-label">Shoe name:</label>#}
+{#                    <br>#}
+{#                    {{ form.Shoe_name }}#}
+{#                </div>#}
+{#                <div class="mb-3">#}
+{#                    <label for="number" class="form-check-label">Price:</label>#}
+{#                    <br>#}
+{#                    {{ form.Shoe_price }}#}
+{#                </div>#}
+{#                <div class="mb-3">#}
+{#                    <label for="number" class="form-check-label">Phone number:</label>#}
+{#                    <br>#}
+{#                    {{ form.Shoe_price }}#}
+{#                </div>#}
+{##}
+{#                <button type="submit" class="btn-outline-secondary">Submit</button>#}
+{##}
+{#        </div>#}
+{##}
+{##}
+{#        </form>#}
+{##}
+{#    </div>#}
+{##}
+{#</div>#}
+{#</body>#}
+{#</html>#}
+
+
+SETTINGS.py
+# mpesa environment configs.
+# MPESA_ENVIRONMENT = 'sandbox'
+# MPESA_CONSUMER_KEY = 'I5ESLqELUEEkUB5kCPvRbTQHhK6iO4QC'
+# MPESA_CONSUMER_SECRET = 'EGuIOfCwHQmJouFC'
+# MPESA_EXPRESS_SHORTCODE = '174379'
+# MPESA_SHORTCODE_TYPE = 'paybill'
+# MPESA_PASSKEY = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919'
+# MPESA_INITIATOR_USERNAME = 'New Shoes app'
+
+
+
+ def index(request, id):
+#     shoes = Shoes.objects.get(id=id)
+#     form = Shoes(request.POST, instance=shoes)
+#     if form.is_valid():
+#         form.save()
+#         return redirect('/show')
+#     return redirect(request, 'checkout.html', {'shoes': shoes})
+#
+#     cl = MpesaClient()
+#     phone_number = '0745353600'
+#     amount = 1
+#     account_reference = 'ENTERPRISES'
+#     transaction_desc = 'paying shoes'
+#     callback_url = 'https://api.darajambili.com/express-payment'
+#     response = cl.stk_push(phone_number, amount, account_reference, transaction_desc, callback_url)
+#     return HttpResponse(response)
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkout</title>
+</head>
+<div>
+    <h1>Checkout</h1>
+    <form action="{% url 'checkout' %}" method="post">
+        {% csrf_token %}
+        <div class="container-fluid">
+            <div class="row-cols-5">
+                <form method="post" class="post-form" action="/checkout">
+                    {% csrf_token %}
+                    <div class="mb-3 mt-3">
+                        <label for="name" class="form-label">Shoe name:</label>
+                        <br>
+                        {{ form.Shoe_name }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="number" class="form-check-label">Price:</label>
+                        <br>
+                        {{ form.Shoe_price }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="number" class="form-check-label">Phone number:</label>
+                        <br>
+                        {{ form.Shoe_price }}
+                    </div>
+
+                    <button type="submit" class="btn-outline-secondary">Submit</button>
+            </div>
+    </form>
+</div>
+</form>
+</body>
+</html>
+
+
+CHECKOUT.html
+<div>
+    <h1>Checkout</h1>
+    <form method="post" class="post-form" action="{% url 'checkout' id=shoe.id %}">
+        {% csrf_token %}
+        <div class="container-fluid">
+            <div class="row-cols-5">
+                <div class="mb-3 mt-3">
+                    <label for="name" class="form-label">Shoe name:</label>
+                    <br>
+                    {{ form.Shoe_name }}
+                </div>
+                <div class="mb-3">
+                    <label for="price" class="form-check-label">Price:</label>
+                    <br>
+                    {{ form.Shoe_price }}
+                </div>
+                <div class="mb-3">
+                    <label for="number" class="form-check-label">Phone number:</label>
+                    <br>
+                    {{ form.phone_number }}
+                </div>
+
+                <button type="submit" class="btn-outline-secondary">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>

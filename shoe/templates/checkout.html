@@ -1,40 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Payment</title>
+    <title>Checkout</title>
 </head>
 <body>
 <div>
-    <div class="container-fluid">
-        <div class="row-cols-5">
-            <form method="post" class="post-form" action="/index">
-                {% csrf_token %}
+    <h1>Checkout</h1>
+    <form method="post" class="post-form" action="{% url 'checkout' id=shoe.id %}">
+        {% csrf_token %}
+        <div class="container-fluid">
+            <div class="row-cols-5">
                 <div class="mb-3 mt-3">
                     <label for="name" class="form-label">Shoe name:</label>
                     <br>
                     {{ form.Shoe_name }}
                 </div>
                 <div class="mb-3">
-                    <label for="number" class="form-check-label">Price:</label>
+                    <label for="price" class="form-check-label">Price:</label>
                     <br>
                     {{ form.Shoe_price }}
                 </div>
                 <div class="mb-3">
                     <label for="number" class="form-check-label">Phone number:</label>
                     <br>
-                    {{ form.Shoe_price }}
+                    {{ form.phone_number }}
                 </div>
 
                 <button type="submit" class="btn-outline-secondary">Submit</button>
-
+            </div>
         </div>
-
-
-        </form>
-
-    </div>
-
+    </form>
 </div>
+
 </body>
 </html>
+
+

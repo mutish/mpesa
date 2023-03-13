@@ -55,7 +55,7 @@
             <br>
             <a href="/delete/{{ shoes.id }}" class="btn btn-outline-danger">Delete</a>
             <br>
-            <a href="/index/{{ shoes.id }}" class="btn-outline-secondary">Checkout</a>
+            <a href="/checkout/{{ shoes.id }}" class="btn-outline-secondary">Checkout</a>
         </td>
       </tr>
       {% endfor %}
@@ -66,3 +66,33 @@
 </div>
 </body>
 </html>
+
+
+
+<div>
+    <h1>Checkout</h1>
+    <form method="post" class="post-form" action="{% url 'checkout' id=shoe.id %}">
+        {% csrf_token %}
+        <div class="container-fluid">
+            <div class="row-cols-5">
+                <div class="mb-3 mt-3">
+                    <label for="name" class="form-label">Shoe name:</label>
+                    <br>
+                    {{ form.Shoe_name }}
+                </div>
+                <div class="mb-3">
+                    <label for="price" class="form-check-label">Price:</label>
+                    <br>
+                    {{ form.Shoe_price }}
+                </div>
+                <div class="mb-3">
+                    <label for="number" class="form-check-label">Phone number:</label>
+                    <br>
+                    {{ form.phone_number }}
+                </div>
+
+                <button type="submit" class="btn-outline-secondary">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
